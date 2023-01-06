@@ -1,0 +1,21 @@
+= Spring Office Hours Image Service
+
+Access to blank or customized brand images
+
+Get the template file:
+
+include::{snippets}/template/http-request.adoc[]
+
+image::spring-office-hours-blank.png[]
+
+Add branded text overlay to the template file:
+
+include::{snippets}/custom/http-request.adoc[]
+
+image::custom.png[]
+
+Get thumbnail image for scheduling upcoming shows:
+
+include::{snippets}/streamyard/http-request.adoc[]
+
+image::streamyard.png[]
