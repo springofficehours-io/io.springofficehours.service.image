@@ -4,18 +4,18 @@ Access to blank or customized brand images
 
 Get the template file:
 
-include::{snippets}/template/http-request.adoc[]
+operation::template[snippets='curl-request,http-request']
 
-image::spring-office-hours-blank.png[]
+image::images/spring-office-hours-blank.png[]
 
 Add branded text overlay to the template file:
 
-include::{snippets}/custom/http-request.adoc[]
+operation::custom[snippets='curl-request,http-request']
 
-image::custom.png[]
+image::images/custom.png[]
 
 Get thumbnail image for scheduling upcoming shows:
 
-include::{snippets}/streamyard/http-request.adoc[]
+operation::streamyard[snippets='curl-request,http-request']
 
-image::streamyard.png[]
+image::images/streamyard.png[]
