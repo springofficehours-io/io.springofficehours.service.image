@@ -21,4 +21,4 @@ jobs:
             az extension add --name containerapp --upgrade
             az provider register --namespace Microsoft.App
             az provider register --namespace Microsoft.OperationalInsights
-            az containerapp env delete --name "tanzu-tv-asa" --resource-group tanzu-tv --yes --no-wait
+            az containerapp env delete --name "tanzu-tv-asa" --resource-group tanzu-tv --yes
