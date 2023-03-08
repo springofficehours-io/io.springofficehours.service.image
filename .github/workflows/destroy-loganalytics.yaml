@@ -1,4 +1,4 @@
-name: destroy-gen2
+name: destroy-log-analytics
 
 on:
   workflow_dispatch:
