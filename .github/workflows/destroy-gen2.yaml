@@ -1,4 +1,4 @@
-name: create-gen2
+name: destroy-gen2
 
 on:
   workflow_dispatch:
@@ -21,6 +21,4 @@ jobs:
             az extension add --name containerapp --upgrade
             az provider register --namespace Microsoft.App
             az provider register --namespace Microsoft.OperationalInsights
-            az containerapp env create --name "tanzu-tv-asa" --resource-group tanzu-tv --location "eastus"
-            az extension add --source https://ascprivatecli.blob.core.windows.net/cli-extension/spring-1.1.11-py3-none-any.whl --upgrade --yes
-            az spring app create --resource-group tanzu-tv --service tanzu-tv-asa --name image-service --cpu 1 --memory 2Gi --assign-endpoint true
+            az containerapp env delete --name "tanzu-tv-asa" --resource-group tanzu-tv --yes --no-wait
