@@ -15,7 +15,7 @@ jobs:
       - name: Azure CLI Action
         uses: Azure/cli@v1
         with:
-          azcliversion: 2.45.0
+          azcliversion: 2.46.0
           inlineScript: |
             az account show
             az storage -h
