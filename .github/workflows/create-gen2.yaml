@@ -24,4 +24,4 @@ jobs:
             az extension add --source https://ascprivatecli.blob.core.windows.net/cli-extension/spring-1.1.11-py3-none-any.whl --upgrade --yes
             az provider register --namespace Microsoft.AppPlatform
             az spring create --resource-group tanzu-tv --name tanzu-tv-asa-app --managed-environment $(az containerapp env show --name tanzu-tv-asa --resource-group tanzu-tv --query id -o tsv) --sku standardGen2 --location "eastus"
-            az spring app create --resource-group tanzu-tv --service tanzu-tv-asa --name image-service --cpu 1 --memory 2Gi --assign-endpoint true
+            az spring app create --resource-group tanzu-tv --service tanzu-tv-asa-app --name image-service --cpu 1 --memory 2Gi --assign-endpoint true
