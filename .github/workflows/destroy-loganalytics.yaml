@@ -1,0 +1,23 @@
+name: destroy-gen2
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: az containerapp env delete
+        uses: Azure/cli@v1
+        with:
+          azcliversion: 2.46.0
+          inlineScript: |
+            az extension add --name containerapp --upgrade
+            az provider register --namespace Microsoft.App
+            az provider register --namespace Microsoft.OperationalInsights
+            az monitor log-analytics workspace delete --force true -resource-group tanzu-tv --yes
