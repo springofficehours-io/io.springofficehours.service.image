@@ -12,13 +12,13 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Azure CLI Action
+      - name: az containerapp env delete
         uses: Azure/cli@v1
         with:
           azcliversion: 2.46.0
           inlineScript: |
-            az account show
             az extension add --name containerapp --upgrade
             az provider register --namespace Microsoft.App
             az provider register --namespace Microsoft.OperationalInsights
             az containerapp env delete --name "tanzu-tv-asa" --resource-group tanzu-tv --yes
+            az monitor log-analytics workspace delete --force true -resource-group tanzu-tv --yes

@@ -17,7 +17,6 @@ jobs:
         with:
           azcliversion: 2.46.0
           inlineScript: |
-            az account show
             az extension add --name containerapp --upgrade
             az provider register --namespace Microsoft.App
             az provider register --namespace Microsoft.OperationalInsights
