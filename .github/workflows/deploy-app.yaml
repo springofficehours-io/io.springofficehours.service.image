@@ -1,4 +1,4 @@
-name: create-gen2
+name: deploy-app
 
 on:
   workflow_dispatch:
