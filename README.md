@@ -4,7 +4,7 @@ Developed during [Code episode 66](https://tanzu.vmware.com/developer/tv/code/00
 
 ## Made with
 
-- Spring Boot 3.0.1
+- Spring Boot 3.0.3
 - Spring Web
 - Spring Rest Docs
 - (and ChatGPT)
@@ -26,3 +26,11 @@ The following guides illustrate how to use some features concretely:
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
 * [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+
+### Workflows
+
+Create credentials to store in secret variable AZURE_CREDENTIALS:
+
+```bash
+az ad sp create-for-rbac --name "dashaun-tanzu-tv" --role contributor --scopes /subscriptions/5449797d-453a-477d-8e8b-9e714d207115/resourceGroups/tanzu-tv --sdk-auth
+```

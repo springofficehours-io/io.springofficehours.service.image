@@ -41,3 +41,6 @@ build/
 /chatVersion.png
 /BlobImage.java
 /activeDir_Amazon.txt
+
+.envrc
+.idea
