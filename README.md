@@ -2,6 +2,10 @@
 
 Developed during [Code episode 66](https://tanzu.vmware.com/developer/tv/code/0066/)
 
+## Prerequisites
+
+- Java 17
+
 ## Quick Start
 
 ```bash
