@@ -20,8 +20,8 @@ jobs:
             az extension add --name containerapp --upgrade
             az provider register --namespace Microsoft.App
             az provider register --namespace Microsoft.OperationalInsights
-            az containerapp env create --name "tanzu-tv-asa" --resource-group tanzu-tv --location "eastus"
+            az containerapp env create -n "tanzu-tv-asa" -g resource-group tanzu-tv -l "eastus"
             az extension add --source https://ascprivatecli.blob.core.windows.net/cli-extension/spring-1.1.11-py3-none-any.whl --upgrade --yes
             az provider register --namespace Microsoft.AppPlatform
-            az spring create --resource-group tanzu-tv --name tanzu-tv-asa-app --managed-environment $(az containerapp env show --name tanzu-tv-asa --resource-group tanzu-tv --query id -o tsv) --sku standardGen2 --location "eastus"
+            az spring create -g tanzu-tv -n tanzu-tv-asa-app --managed-environment "$(az containerapp env show -n tanzu-tv-asa -g tanzu-tv --query id -o tsv)" --sku standardGen2 -l "eastus"
             az spring app create --resource-group tanzu-tv --service tanzu-tv-asa-app --name image-service --cpu 1 --memory 2Gi --assign-endpoint true

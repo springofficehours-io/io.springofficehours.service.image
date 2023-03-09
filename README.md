@@ -2,6 +2,15 @@
 
 Developed during [Code episode 66](https://tanzu.vmware.com/developer/tv/code/0066/)
 
+## Quick Start
+
+```bash
+git clone git@github.com:dashaun/spring-office-hours-image-service.git
+cd spring-office-hours-image-service
+./mvnw clean package spring-boot:run
+```
+> Open your browser to http://localhost:8080/ to see the generated documentation
+
 ## Made with
 
 - Spring Boot 3.0.3
