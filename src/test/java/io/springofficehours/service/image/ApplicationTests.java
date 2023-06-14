@@ -1,4 +1,4 @@
-package tv.tanzu.service.brand.springofficehours.image;
+package io.springofficehours.service.image;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

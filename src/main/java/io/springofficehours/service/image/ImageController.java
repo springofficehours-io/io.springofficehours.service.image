@@ -1,4 +1,4 @@
-package tv.tanzu.service.brand.springofficehours.image;
+package io.springofficehours.service.image;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
