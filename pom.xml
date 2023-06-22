@@ -88,6 +88,7 @@
         <configuration>
           <image>
             <builder>dashaun/builder:tiny</builder>
+            <name>dashaun/soh-image-service:${project.artifactId}</name>
           </image>
         </configuration>
       </plugin>
