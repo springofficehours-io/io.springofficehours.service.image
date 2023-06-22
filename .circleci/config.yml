@@ -22,7 +22,7 @@ jobs:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKERHUB_PASSWORD
       - docker/push:
-          image: $IMAGE_NAME
+          image: dashaun/soh-image-service
           tag: $CIRCLE_TAG-aarch_64
 
 workflows:
@@ -31,8 +31,6 @@ workflows:
       - arm64-native:
           context:
             - dashaun-dockerhub
-          environment:
-            IMAGE_NAME: dashaun/soh-image-service
           filters:
             tags:
               only: /^v.*/
