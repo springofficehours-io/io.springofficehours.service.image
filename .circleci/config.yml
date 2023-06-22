@@ -32,7 +32,7 @@ workflows:
           context:
             - dashaun-dockerhub
           environment:
-            IMAGE_NAME: CHANGEME
+            IMAGE_NAME: dashaun/soh-image-service
           filters:
             tags:
               only: /^v.*/
