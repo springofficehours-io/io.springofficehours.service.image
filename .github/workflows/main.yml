@@ -1,0 +1,60 @@
+name: Native-AMD64
+
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  IMAGE_NAME: CHANGEME
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      #Login to DockerHub
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: dashaun
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'liberica' # See 'Supported distributions' for available options
+          java-version: '17'
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      #Build Image
+      - name: Build Image
+        run: ./mvnw -Pnative spring-boot:build-image -DskipTests
+      #Deploy the image to the Docker registry
+      - name: Push Images to Docker Registry
+        run: docker push -a $IMAGE_NAME
+
+
+  manifest:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: dashaun
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: pull-arm64
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 5
+          retry_wait_seconds: 60
+          max_attempts: 6
+          command: docker pull $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
+      - name: create-manifest
+        run: |
+          docker manifest create $IMAGE_NAME:$GITHUB_REF_NAME --amend $IMAGE_NAME:$GITHUB_REF_NAME-x86_64 --amend $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
+          docker manifest push $IMAGE_NAME:$GITHUB_REF_NAME
+          docker manifest create $IMAGE_NAME:latest --amend $IMAGE_NAME:$GITHUB_REF_NAME-x86_64 --amend $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
+          docker manifest push $IMAGE_NAME:latest
