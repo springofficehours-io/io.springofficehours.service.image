@@ -17,7 +17,7 @@ cd spring-office-hours-image-service
 
 ## Made with
 
-- Spring Boot 3.0.3
+- Spring Boot
 - Spring Web
 - Spring Rest Docs
 - (and ChatGPT)
