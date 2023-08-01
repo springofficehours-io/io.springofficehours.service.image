@@ -34,7 +34,7 @@ class WebLayerTest {
     }
 
     @Test
-    public void shouldReturnImageForStreamyard() throws Exception {
+    void shouldReturnImageForStreamyard() throws Exception {
         this.mockMvc.perform(get("/streamyard"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -43,7 +43,7 @@ class WebLayerTest {
     }
 
     @Test
-    public void shouldReturnTemplateImageForSpringOfficeHours() throws Exception {
+    void shouldReturnTemplateImageForSpringOfficeHours() throws Exception {
         this.mockMvc.perform(get("/template"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -52,7 +52,7 @@ class WebLayerTest {
     }
 
     @Test
-    public void shouldReturnCustomizedImageForSpringOfficeHours() throws Exception {
+    void shouldReturnCustomizedImageForSpringOfficeHours() throws Exception {
         this.mockMvc.perform(post("/custom")
                         .content("TEST BANNER")
                         .contentType(MediaType.TEXT_PLAIN))

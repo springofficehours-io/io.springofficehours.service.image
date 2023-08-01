@@ -5,11 +5,11 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.1.0</version>
+    <version>3.1.2</version>
     <relativePath></relativePath>
   </parent>
-  <groupId>io.springofficehours.service</groupId>
-  <artifactId>image</artifactId>
+  <groupId>dashaun</groupId>
+  <artifactId>io.springofficehours.service.image</artifactId>
   <version>0</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <properties>
@@ -88,7 +88,8 @@
         <configuration>
           <image>
             <builder>dashaun/builder:tiny</builder>
-            <name>dashaun/soh-image-service:${project.artifactId}</name>
+            <createdDate>now</createdDate>
+            <name>${project.groupId}/${project.artifactId}:v${project.version}-${os.detected.arch}</name>
           </image>
         </configuration>
       </plugin>
