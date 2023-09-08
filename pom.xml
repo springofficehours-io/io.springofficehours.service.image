@@ -25,11 +25,6 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
@@ -97,6 +92,21 @@
             <name>${project.groupId}/${project.artifactId}:v${project.version}-${os.detected.arch}</name>
           </image>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>io.spring.javaformat</groupId>
+        <artifactId>spring-javaformat-maven-plugin</artifactId>
+        <version>0.0.39</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+            <inherited>true</inherited>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

@@ -20,45 +20,47 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
+@ExtendWith({ RestDocumentationExtension.class, SpringExtension.class })
 @WebMvcTest(ImageController.class)
 class WebLayerTest {
 
-    private MockMvc mockMvc;
+	private MockMvc mockMvc;
 
-    @BeforeEach
-    void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .apply(documentationConfiguration(restDocumentation))
-                .build();
-    }
+	@BeforeEach
+	void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+			.apply(documentationConfiguration(restDocumentation).uris()
+				.withScheme("https")
+				.withHost("image-service.springofficehours.io")
+				.withPort(443))
+			.build();
+	}
 
-    @Test
-    void shouldReturnImageForStreamyard() throws Exception {
-        this.mockMvc.perform(get("/streamyard"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.IMAGE_PNG))
-                .andDo(document("streamyard"));
-    }
+	@Test
+	void shouldReturnImageForStreamyard() throws Exception {
+		this.mockMvc.perform(get("/streamyard"))
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.IMAGE_PNG))
+			.andDo(document("streamyard"));
+	}
 
-    @Test
-    void shouldReturnTemplateImageForSpringOfficeHours() throws Exception {
-        this.mockMvc.perform(get("/template"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.IMAGE_PNG))
-                .andDo(document("template"));
-    }
+	@Test
+	void shouldReturnTemplateImageForSpringOfficeHours() throws Exception {
+		this.mockMvc.perform(get("/template"))
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.IMAGE_PNG))
+			.andDo(document("template"));
+	}
 
-    @Test
-    void shouldReturnCustomizedImageForSpringOfficeHours() throws Exception {
-        this.mockMvc.perform(post("/custom")
-                        .content("TEST BANNER")
-                        .contentType(MediaType.TEXT_PLAIN))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.IMAGE_PNG))
-                .andDo(document("custom"));
-    }
+	@Test
+	void shouldReturnCustomizedImageForSpringOfficeHours() throws Exception {
+		this.mockMvc.perform(post("/custom").content("TEST BANNER").contentType(MediaType.TEXT_PLAIN))
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(content().contentType(MediaType.IMAGE_PNG))
+			.andDo(document("custom"));
+	}
+
 }
