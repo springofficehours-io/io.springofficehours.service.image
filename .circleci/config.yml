@@ -14,7 +14,7 @@ jobs:
       - sdkman/setup-sdkman
       - sdkman/sdkman-install:
           candidate: java
-          version: 22.3.r17-grl
+          version: 17.0.8.graalce
       - run:
           name: "mvnw -Pnative spring-boot:build-image"
           command: "./mvnw -Pnative spring-boot:build-image -DskipTests"
@@ -22,7 +22,7 @@ jobs:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKERHUB_PASSWORD
       - docker/push:
-          image: dashaun/soh-image-service
+          image: dashaun/$CIRCLE_PROJECT_REPONAME
           tag: $CIRCLE_TAG-aarch_64
 
 workflows:
