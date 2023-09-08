@@ -30,7 +30,7 @@ jobs:
           submodules: true
       #Build Image
       - name: Build Image
-        run: ./mvnw -Pnative spring-boot:build-image -DskipTests
+        run: ./mvnw -Pnative spring-boot:build-image
       #Deploy the image to the Docker registry
       - name: Push Images to Docker Registry
         run: docker push -a $IMAGE_NAME
