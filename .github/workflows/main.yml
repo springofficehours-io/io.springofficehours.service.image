@@ -6,7 +6,7 @@ on:
       - "v*"
 
 env:
-  IMAGE_NAME: dashaun/${GITHUB_REPOSITORY#*/}
+  IMAGE_NAME: dashaun/io.springofficehours.service.image
 
 jobs:
   build:
