@@ -20,8 +20,7 @@ class RequestLoggingFilterConfig {
 
 	@Bean
 	public CommonsRequestLoggingFilter logFilter() {
-		CommonsRequestLoggingFilter filter
-				= new CommonsRequestLoggingFilter();
+		CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
 		filter.setIncludeQueryString(true);
 		filter.setIncludePayload(true);
 		filter.setMaxPayloadLength(10000);
@@ -29,4 +28,5 @@ class RequestLoggingFilterConfig {
 		filter.setAfterMessagePrefix("REQUEST DATA: ");
 		return filter;
 	}
+
 }
