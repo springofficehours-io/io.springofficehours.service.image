@@ -36,25 +36,25 @@ jobs:
         run: docker push -a $IMAGE_NAME
 
 
-  manifest:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: dashaun
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: pull-arm64
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 5
-          retry_wait_seconds: 60
-          max_attempts: 6
-          command: docker pull $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
-      - name: create-manifest
-        run: |
-          docker manifest create $IMAGE_NAME:$GITHUB_REF_NAME --amend $IMAGE_NAME:$GITHUB_REF_NAME-x86_64 --amend $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
-          docker manifest push $IMAGE_NAME:$GITHUB_REF_NAME
-          docker manifest create $IMAGE_NAME:latest --amend $IMAGE_NAME:$GITHUB_REF_NAME-x86_64 --amend $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
-          docker manifest push $IMAGE_NAME:latest
+#  manifest:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Login to DockerHub
+#        uses: docker/login-action@v2
+#        with:
+#          username: dashaun
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#      - name: pull-arm64
+#        uses: nick-fields/retry@v2
+#        with:
+#          timeout_minutes: 5
+#          retry_wait_seconds: 60
+#          max_attempts: 6
+#          command: docker pull $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
+#      - name: create-manifest
+#        run: |
+#          docker manifest create $IMAGE_NAME:$GITHUB_REF_NAME --amend $IMAGE_NAME:$GITHUB_REF_NAME-x86_64 --amend $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
+#          docker manifest push $IMAGE_NAME:$GITHUB_REF_NAME
+#          docker manifest create $IMAGE_NAME:latest --amend $IMAGE_NAME:$GITHUB_REF_NAME-x86_64 --amend $IMAGE_NAME:$GITHUB_REF_NAME-aarch_64
+#          docker manifest push $IMAGE_NAME:latest

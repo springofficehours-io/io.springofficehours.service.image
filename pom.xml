@@ -116,7 +116,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <image>
-            <builder>dashaun/builder:full</builder>
+            <builder>paketobuildpacks/builder:full</builder>
             <createdDate>now</createdDate>
             <name>${project.groupId}/${project.artifactId}:v${project.version}-${os.detected.arch}</name>
           </image>
