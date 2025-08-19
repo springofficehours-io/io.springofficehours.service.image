@@ -10,6 +10,8 @@ image::images/spring-office-hours-blank.png[]
 
 Add branded text overlay to the template file:
 
+`echo 'TEST BANNER' | http --download POST 'http://localhost:8080/custom' 'Content-Type:text/plain'`
+
 operation::custom[snippets='curl-request,httpie-request']
 
 image::images/custom.png[]
